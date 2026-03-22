@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the project." },
+        "description": { "type": "string", "description": "A description of the project." },
+        "url": { "type": "string", "description": "The URL of the project." },
+        "status": {
+          "type": "string",
+          "enum": ["planned", "in-progress", "completed"],
+          "description": "The status of the project."
+        },
+        "createdAt": { "type": "string", "format": "date-time", "description": "The date the project was created." }
+      },
+      "required": ["title", "status", "createdAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A user of the application.",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "photoURL": { "type": "string", "description": "The user's photo URL." }
+      },
+      "required": ["displayName", "email"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "User" },
+      "description": "User profile document."
+    },
+    "/users/{userId}/projects/{projectId}": {
+      "schema": { "$ref": "Project" },
+      "description": "Projects belonging to a user."
+    }
+  }
+}

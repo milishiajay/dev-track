@@ -1,0 +1,5 @@
+{
+  "name": "DevTrack",
+  "description": "A project tracker for developers to manage their portfolio projects, featuring user authentication and data persistence.",
+  "requestFramePermissions": []
+}
